@@ -75,10 +75,10 @@
                             <div class="card-body">
                                 <h5 class="card-title">Hawk <small class="text-muted">£1.1M each</small></h5>
                                 <div class="form-group">
-                                    <label for="exampleFormControlSelect1">The sports car of training aircraft</label>
+                                    <label for="hawkPicker">The sports car of training aircraft</label>
                                     <div class="d-flex justify-content-between">
                                         <p class="mr-5">Quantity:</p>
-                                        <select class="form-control ml-5" id="exampleFormControlSelect1">
+                                        <select class="form-control ml-5" id="hawkPicker">
                                             <option>1</option>
                                             <option>2</option>
                                             <option>3</option>
@@ -88,13 +88,20 @@
                                 <p class="card-text">Select your optional extras:</p>
                                 <ul class="list-group list-group-flush">
                                     </small>
-                                    <li class="list-group-item">Go faster stripes <small class="text-muted">£10K each</small></li>
+                                    <li class="list-group-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                Go faster stripes <small class="text-muted">£10K each</small>
+                                            </label>
+                                        </div>
+                                    </li>
                                     <li class="list-group-item">Coffee cup holder <small class="text-muted">£5K each</small></li>
                                     <li class="list-group-item">Metallic paintwork <small class="text-muted">£15K each</small></li>
                                 </ul>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <p>Total</p>
-                                    <small class="text-muted">£</small>
+                                    <div><small class="text-muted">£</small><span id="hawkTotalCost">1.1</span>M</div>
                                 </div>
                             </div>
                         </div>
@@ -149,6 +156,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script src="./script.js"></script>
 </body>
 
 </html>
