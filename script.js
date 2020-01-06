@@ -5,42 +5,51 @@ $(function() {
     function setHawkTotalCost() {
 
         var hawkCost = 1.10;
-        var totalHawkCost;
+        var totalHawkCost = 1.10;
+        var optionalExtras = 0;
 
         $('#hawkPicker').change(function() {
             var noOfHawks;
 
             noOfHawks = getNumberOfHawks();
-            totalHawkCost = calculateHawkTotalCost(noOfHawks, 1);
-
-            function getNumberOfHawks() {
-                noOfHawks = $('#hawkPicker').val();
-                return noOfHawks;
-            }
-
-            function calculateHawkTotalCost(noOfHawks, totalOptionalExtras) {
-                return (noOfHawks * hawkCost * totalOptionalExtras).toFixed(2);
-            }
+            totalHawkCost = calculateHawkTotalCost(noOfHawks, optionalExtras);
 
             $('#hawkTotalCost').text(totalHawkCost);
 
-            calculateOptionalExtras();
-
-            function calculateOptionalExtras() {
-
-                var hawkOptions = {
-                    stripes: $('#stripes').is(':checked'),
-                    coffee: $('#coffee').is(':checked'),
-                    paint: $('#paint').is(':checked'),
-                };
-
-
-
-                console.log(hawkOptions);
-            }
         });
 
+        $('#stripes').change(function() {
+            calculateOptionalExtras();
 
+            $('#hawkTotalCost').text(totalHawkCost);
+        });
+
+        function calculateHawkTotalCost(noOfHawks, optionalExtras) {
+            return (noOfHawks * (hawkCost + optionalExtras)).toFixed(2);
+        }
+
+        function getNumberOfHawks() {
+            noOfHawks = $('#hawkPicker').val();
+            return noOfHawks;
+        }
+
+        function calculateOptionalExtras(params) {
+            var totalOptionalExtras = 0;
+
+            if ($('#stripes').is(':checked')) {
+                totalOptionalExtras += 0.02;
+            }
+            if ($('#coffee').is(':checked')) {
+                totalOptionalExtras += 0.01;
+            }
+            if ($('#paint').is(':checked')) {
+                totalOptionalExtras += 0.03;
+            }
+
+
+            return totalOptionalExtras;
+
+        }
     }
 
 });
