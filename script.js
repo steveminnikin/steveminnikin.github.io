@@ -5,13 +5,6 @@ $(function() {
     function setHawkTotalCost() {
 
         var hawkCost = 1.10;
-        var totalHawkCost = 1.10;
-        var optionalExtras = 0;
-
-        $('#hawkPicker').change(function() {
-            calculateHawkTotalCost();
-
-        });
 
         $('.hawk').change(function() {
             calculateHawkTotalCost();
