@@ -9,23 +9,23 @@ $(function() {
         var optionalExtras = 0;
 
         $('#hawkPicker').change(function() {
+            calculateHawkTotalCost();
+
+        });
+
+        $('.hawk').change(function() {
+            calculateHawkTotalCost();
+        });
+
+        function calculateHawkTotalCost() {
             var noOfHawks;
 
             noOfHawks = getNumberOfHawks();
-            totalHawkCost = calculateHawkTotalCost(noOfHawks, optionalExtras);
+            totalOptionExtras = calculateOptionalExtras();
+            totalHawkCost = noOfHawks * (hawkCost + totalOptionExtras);
 
-            $('#hawkTotalCost').text(totalHawkCost);
+            $('#hawkTotalCost').text(totalHawkCost.toFixed(2));
 
-        });
-
-        $('#stripes').change(function() {
-            calculateOptionalExtras();
-
-            $('#hawkTotalCost').text(totalHawkCost);
-        });
-
-        function calculateHawkTotalCost(noOfHawks, optionalExtras) {
-            return (noOfHawks * (hawkCost + optionalExtras)).toFixed(2);
         }
 
         function getNumberOfHawks() {
@@ -33,7 +33,7 @@ $(function() {
             return noOfHawks;
         }
 
-        function calculateOptionalExtras(params) {
+        function calculateOptionalExtras() {
             var totalOptionalExtras = 0;
 
             if ($('#stripes').is(':checked')) {
@@ -45,7 +45,7 @@ $(function() {
             if ($('#paint').is(':checked')) {
                 totalOptionalExtras += 0.03;
             }
-
+            console.log(totalOptionalExtras);
 
             return totalOptionalExtras;
 
