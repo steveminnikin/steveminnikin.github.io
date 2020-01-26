@@ -1,4 +1,9 @@
 $(function() {
+    var order = {
+        unitCost: 0,
+        number: 1,
+        optionalExtras: 0,
+        cost: 0};
 
     setHawkTotalCost();
 
@@ -8,17 +13,23 @@ $(function() {
         var lightningCost = 35;
 
         $(':input').change(function() {
-            calculateTotalCost($(this));
+
+            order.unitCost = 
+            order.number = getNumberOfAircraft(order);
+            order.optionalExtras = calculateOptionalExtras(aircraftType);
+            order.cost = calculateTotalCost($(this));
+
+            $('#hawkTotalCost').text(order.cost.toFixed(2));
         });
 
-        function calculateTotalCost(aircraftType) {
-            var noOfAircraft;
+        function calculateTotalCost(order) {
+            var totalCost;
 
-            noOfAircraft = getNumberOfAircraft(aircraftType);
-            totalOptionExtras = calculateOptionalExtras(aircraftType);
-            totalCost = noOfAircraft * (hawkCost + totalOptionExtras);
+            
+            
+             totalCost = noOfAircraft * (hawkCost + order.optionalExtras);
 
-            $('#hawkTotalCost').text(totalCost.toFixed(2));
+            return totalCost
 
         }
 
@@ -35,6 +46,8 @@ $(function() {
                     totalOptionalExtras += Number(this.value);
                 }
             });
+
+            
 
             // if ($('#stripes').is(':checked')) {
             //     totalOptionalExtras += $(this).val();
