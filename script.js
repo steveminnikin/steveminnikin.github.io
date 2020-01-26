@@ -5,39 +5,46 @@ $(function() {
     function setHawkTotalCost() {
 
         var hawkCost = 1.10;
+        var lightningCost = 35;
 
-        $('.hawk').change(function() {
-            calculateHawkTotalCost();
+        $(':input').change(function() {
+            calculateTotalCost($(this));
         });
 
-        function calculateHawkTotalCost() {
-            var noOfHawks;
+        function calculateTotalCost(aircraftType) {
+            var noOfAircraft;
 
-            noOfHawks = getNumberOfHawks();
-            totalOptionExtras = calculateOptionalExtras();
-            totalHawkCost = noOfHawks * (hawkCost + totalOptionExtras);
+            noOfAircraft = getNumberOfAircraft(aircraftType);
+            totalOptionExtras = calculateOptionalExtras(aircraftType);
+            totalCost = noOfAircraft * (hawkCost + totalOptionExtras);
 
-            $('#hawkTotalCost').text(totalHawkCost.toFixed(2));
+            $('#hawkTotalCost').text(totalCost.toFixed(2));
 
         }
 
-        function getNumberOfHawks() {
-            noOfHawks = $('#hawkPicker').val();
-            return noOfHawks;
+        function getNumberOfAircraft(aircraftType) {
+            noOfAircraft = aircraftType.val();
+            return noOfAircraft;
         }
 
-        function calculateOptionalExtras() {
+        function calculateOptionalExtras(aircraft) {
             var totalOptionalExtras = 0;
 
-            if ($('#stripes').is(':checked')) {
-                totalOptionalExtras += 0.02;
-            }
-            if ($('#coffee').is(':checked')) {
-                totalOptionalExtras += 0.01;
-            }
-            if ($('#paint').is(':checked')) {
-                totalOptionalExtras += 0.03;
-            }
+            $(':checkbox').each(function() {
+                if (this.checked) {
+                    totalOptionalExtras += Number(this.value);
+                }
+            });
+
+            // if ($('#stripes').is(':checked')) {
+            //     totalOptionalExtras += $(this).val();
+            // }
+            // if ($('#coffee').is(':checked')) {
+            //     totalOptionalExtras += 0.01;
+            // }
+            // if ($('#paint').is(':checked')) {
+            //     totalOptionalExtras += 0.03;
+            // }
             console.log(totalOptionalExtras);
 
             return totalOptionalExtras;

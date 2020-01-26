@@ -24,18 +24,18 @@
                         </p>
                         <ul class="list-unstyled">
                             <li class="text-white"><i class="fab fa-bootstrap"></i> <a href="https://getbootstrap.com/" class="text-white">Bootstrap</a> </li>
-                            <li class="text-white">jquery</li>
+                            <li class="text-white"><i class="fab fa-js"></i><a href="https://jquery.com/" class="text-white"> JQuery</a></li>
                             <li class="text-white"><i class="fab fa-font-awesome"></i> <a href="https://fontawesome.com/" class="text-white">Font Awesome</a> </li>
-                            <li class="text-white"><i class="fab fa-github"></i> github (including github pages to host this site)</li>
-                            <li><a href="https://favicon.io/" class="text-white">Favicon.io</a></li>
+                            <li class="text-white"><i class="fab fa-github"></i><a href="https://github.com/" class="text-white"> github (including github pages to host this site)</a></li>
+                            <li class="text-white"><i class="fas fa-circle"></i><a href="https://favicon.io/" class="text-white"> Favicon.io</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-4 offset-md-1 py-4">
                         <h4 class="text-white">Contact</h4>
                         <ul class="list-unstyled">
-                            <li><a href="#" class="text-white">Follow on Twitter</a></li>
-                            <li><a href="#" class="text-white">Like on Facebook</a></li>
-                            <li><a href="#" class="text-white">Email me</a></li>
+                            <li><a href="https://www.steveminnikin.com/" class="text-white">Check out my website</a></li>
+                            <li><a href="https://www.linkedin.com/in/steve-minnikin-498397a8/" class="text-white">View my LinkedIn Profile</a></li>
+                            <li><a href="mailto:steveminnikin@hotmail.com" class="text-white">Email me</a></li>
                         </ul>
                     </div>
                 </div>
@@ -59,10 +59,6 @@
             <div class="container">
                 <h1 class="jumbotron-heading">Choose Your Dream Aircraft</h1>
                 <p class="lead text-muted">Use this page to select the optional extras you want for your aircraft before placing your order</p>
-                <p>
-                    <a href="#" class="btn btn-primary my-2">Main call to action</a>
-                    <a href="#" class="btn btn-secondary my-2">Secondary action</a>
-                </p>
             </div>
         </section>
 
@@ -90,7 +86,7 @@
                                     </small>
                                     <li class="list-group-item">
                                         <div class="form-check">
-                                            <input class="form-check-input hawk" type="checkbox" value="" id="stripes">
+                                            <input class="form-check-input hawk" type="checkbox" value="0.02" id="stripes">
                                             <label class="form-check-label" for="defaultCheck1">
                                                 Go faster stripes <small class="text-muted">£20K each</small>
                                             </label>
@@ -98,7 +94,7 @@
                                     </li>
                                     <li class="list-group-item">
                                         <div class="form-check">
-                                            <input class="form-check-input hawk" type="checkbox" value="" id="coffee">
+                                            <input class="form-check-input hawk" type="checkbox" value="0.01" id="coffee">
                                             <label class="form-check-label" for="defaultCheck1">
                                                 Coffee cup holder <small class="text-muted">£10K each</small>
                                             </label>
@@ -106,7 +102,7 @@
                                     </li>
                                     <li class="list-group-item">
                                         <div class="form-check">
-                                            <input class="form-check-input hawk" type="checkbox" value="" id="paint">
+                                            <input class="form-check-input hawk" type="checkbox" value="0.03" id="paint">
                                             <label class="form-check-label" for="defaultCheck1">
                                                 Metallic paintwork <small class="text-muted">30K each</small>
                                             </label>
@@ -115,11 +111,14 @@
                                 </ul>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <strong>Total</strong>
-                                    <h3><small class="text-muted">£</small><span id="hawkTotalCost">1.10</span>M</h3>
+                                    <h3><small class="text-muted">£</small><span id="hawkTotalCost" class="totalCost">1.10</span>M</h3>
                                 </div>
+                                <!-- Button trigger modal -->
                                 <div class="d-flex align-items-center">
-                                    <button class="btn btn-block btn-primary">Buy Now!</a>
+                                    <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#buyNowModal">Buy Now!</button>
+
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -127,44 +126,173 @@
                         <div class="card mb-4 shadow-sm">
                             <img src="https://images.unsplash.com/photo-1532029895243-5bbef4065be5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" class="card-img-top" alt="F35 aircraft">
                             <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                                <h5 class="card-title">Lightning 2 <small class="text-muted">£35M each</small></h5>
+                                <div class="form-group">
+                                    <label for="hawkPicker">Our newest, shiniest piece of equipment</label>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mr-5">Quantity:</p>
+                                        <select class="form-control ml-5 hawk" id="hawkPicker">
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                            </select>
+                                    </div>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <p class="card-text">Select your optional extras:</p>
+                                <ul class="list-group list-group-flush">
+                                    </small>
+                                    <li class="list-group-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input hawk" type="checkbox" value="" id="stripes">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                    Vertical Take-off <small class="text-muted">£5.2M each</small>
+                                                </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input hawk" type="checkbox" value="" id="coffee">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                    Tinted Windows <small class="text-muted">£100K each</small>
+                                                </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input hawk" type="checkbox" value="" id="paint">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                    Stick on Garfield <small class="text-muted">30K each</small>
+                                                </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong>Total</strong>
+                                    <h3><small class="text-muted">£</small><span id="hawkTotalCost">35</span>M</h3>
+                                </div>
+                                <!-- Button trigger modal -->
+                                <div class="d-flex align-items-center">
+                                    <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#buyNowModal">Buy Now!</button>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        {% include icons/placeholder.svg width="100%" height="225" background="#55595c" color="#eceeef" class="card-img-top" text="Thumbnail" %}
-                        <div class="card-body">
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    <div class="col-md-4">
+                        <div class="card mb-4 shadow-sm">
+                            <img src="http://www.defenceimagery.mod.uk/fotoweb/cmdrequest/rest/Preview.fwx?rt=1&f=EFCC51FEE65DA414D18085DA188CAB45524FFC4F7A63A403C47E17A8BEF1E554B796D6EA4FD91784A04B36049843E1FB56B129047A099FD2448D5AA2FD3EBB84D49852E5EF22F9F1EB7617607542125E60955255048DE8EB52325AFEE11C4DE620908A9434FBC29600A8E5C05B63B9878B1E99FD23FE1EA2CF6DBD46470FE88F7B39F2770D315FC84D07633F495C1A21C928756DABA9E56EC647A9AD1876E4CF96115F8554409E90&sz=650"
+                                class="card-img-top" alt="chinook helicopter">
+                            <div class="card-body">
+                                <h5 class="card-title">Chinook <small class="text-muted">£12M each</small></h5>
+                                <div class="form-group">
+                                    <label for="hawkPicker">The legendary wocca!</label>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="mr-5">Quantity:</p>
+                                        <select class="form-control ml-5 hawk" id="hawkPicker">
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                </select>
+                                    </div>
                                 </div>
-                                <small class="text-muted">9 mins</small>
+                                <p class="card-text">Select your optional extras:</p>
+                                <ul class="list-group list-group-flush">
+                                    </small>
+                                    <li class="list-group-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input hawk" type="checkbox" value="" id="stripes">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                        Underslung artillery <small class="text-muted">£115M each</small>
+                                                    </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input hawk" type="checkbox" value="" id="coffee">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                        Ear plugs  <small class="text-muted">£10K each</small>
+                                                    </label>
+                                        </div>
+                                    </li>
+                                    <li class="list-group-item">
+                                        <div class="form-check">
+                                            <input class="form-check-input hawk" type="checkbox" value="" id="paint">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                        Furry dice in the cockpit <small class="text-muted">30K each</small>
+                                                    </label>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <strong>Total</strong>
+                                    <h3><small class="text-muted">£</small><span id="hawkTotalCost">12</span>M</h3>
+                                </div>
+                                <!-- Button trigger modal -->
+                                <div class="d-flex align-items-center">
+                                    <button type="button" class="btn btn-block btn-primary" data-toggle="modal" data-target="#buyNowModal">Buy Now!</button>
+
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        </div>
 
+
+        <!-- Modal -->
+        <div class="modal fade" id="buyNowModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Enter your Card Details</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+                            <div class="form-group">
+                                <label for="inputName">Name on Card</label>
+                                <input type="text" required class="form-control" id="inputName">
+                            </div>
+                            <div class="form-group">
+                                <label for="inputNumber">Card Number</label>
+                                <input type="number" class="form-control" required id="inputNumber" placeholder="0000 0000 0000 0000">
+                            </div>
+                            <div class="row">
+                                <div class="col">
+                                    <label for="inputCVC">CVC</label>
+                                    <input type="number" class="form-control" required placeholder="000" id="inputCVC">
+                                </div>
+                                <div class="col">
+                                    <label for="inputExpiryMM">Expiry</label>
+                                    <input type="number" class="form-control" required placeholder="MM" id="inputExpiryMM">
+                                </div>
+                                <div class="col">
+                                    <label for="inputExpiryYY" style="opacity: 0;">.</label>
+                                    <input type="number" class="form-control" required placeholder="YY" id="inputExpiryYY">
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class="btn btn-primary btn-block">Pay Now</button>
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
     </main>
 
     <footer class="text-muted">
         <div class="container">
             <p class="float-right">
-                <a href="#">Back to top</a>
+                <a href="#"><i class="fas fa-caret-square-up fa-3x"></i></a>
             </p>
-            <p>A Minnikin Design! &copy;</p>
+            <p>A Minnikin Design 2020!</p>
         </div>
     </footer>
 
