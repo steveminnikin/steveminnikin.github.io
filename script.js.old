@@ -1,0 +1,75 @@
+$(function() {
+    var order = {
+        unitCost: 0,
+        number: 1,
+        optionalExtras: 0,
+        cost: 0
+    };
+
+    getTotalCost()
+
+    function getTotalCost() {
+
+        $('hawkPicker').change(function() {
+
+            if ($(this).hasClass('hawk')) {
+                order.unitCost = 1.1;
+                order.number = $(this).val();
+            } else if ($(this).hasClass('lightning')) {
+                order.unitCost = 35;
+            } else if ($(this).hasClass('chinook')) {
+                order.unitCost = 22;
+            }
+
+            order.number = getNumberOfAircraft($(this));
+            order.cost = calculateTotalCost();
+
+            $(this).next('span').text(order.cost.toFixed(2));
+        });
+
+
+        //order.optionalExtras = calculateOptionalExtras($(this));
+
+
+
+        function calculateTotalCost() {
+            var totalCost;
+
+            totalCost = order.number * (order.cost + order.optionalExtras);
+
+            return totalCost;
+
+        }
+
+        function getNumberOfAircraft(aircraftType) {
+            noOfAircraft = aircraftType.val();
+            return noOfAircraft;
+        }
+
+        function calculateOptionalExtras(aircraft) {
+            var totalOptionalExtras = 0;
+
+            $(':checkbox').each(function() {
+                if (this.checked) {
+                    totalOptionalExtras += Number(this.value);
+                }
+            });
+
+
+
+            // if ($('#stripes').is(':checked')) {
+            //     totalOptionalExtras += $(this).val();
+            // }
+            // if ($('#coffee').is(':checked')) {
+            //     totalOptionalExtras += 0.01;
+            // }
+            // if ($('#paint').is(':checked')) {
+            //     totalOptionalExtras += 0.03;
+            // }
+            console.log(totalOptionalExtras);
+
+            return totalOptionalExtras;
+
+        }
+    }
+});
