@@ -1,51 +1,64 @@
 $(function() {
+    var order = {
+        unitCost: 0,
+        number: 1,
+        optionalExtras: 0,
+        cost: 0};
 
     setHawkTotalCost();
 
     function setHawkTotalCost() {
 
         var hawkCost = 1.10;
-        var totalHawkCost = 1.10;
-        var optionalExtras = 0;
+        var lightningCost = 35;
 
-        $('#hawkPicker').change(function() {
-            var noOfHawks;
+        $(':input').change(function() {
 
-            noOfHawks = getNumberOfHawks();
-            totalHawkCost = calculateHawkTotalCost(noOfHawks, optionalExtras);
+            order.unitCost = 
+            order.number = getNumberOfAircraft(order);
+            order.optionalExtras = calculateOptionalExtras(aircraftType);
+            order.cost = calculateTotalCost($(this));
 
-            $('#hawkTotalCost').text(totalHawkCost);
-
+            $('#hawkTotalCost').text(order.cost.toFixed(2));
         });
 
-        $('#stripes').change(function() {
-            calculateOptionalExtras();
+        function calculateTotalCost(order) {
+            var totalCost;
 
-            $('#hawkTotalCost').text(totalHawkCost);
-        });
+            
+            
+             totalCost = noOfAircraft * (hawkCost + order.optionalExtras);
 
-        function calculateHawkTotalCost(noOfHawks, optionalExtras) {
-            return (noOfHawks * (hawkCost + optionalExtras)).toFixed(2);
+            return totalCost
+
         }
 
-        function getNumberOfHawks() {
-            noOfHawks = $('#hawkPicker').val();
-            return noOfHawks;
+        function getNumberOfAircraft(aircraftType) {
+            noOfAircraft = aircraftType.val();
+            return noOfAircraft;
         }
 
-        function calculateOptionalExtras(params) {
+        function calculateOptionalExtras(aircraft) {
             var totalOptionalExtras = 0;
 
-            if ($('#stripes').is(':checked')) {
-                totalOptionalExtras += 0.02;
-            }
-            if ($('#coffee').is(':checked')) {
-                totalOptionalExtras += 0.01;
-            }
-            if ($('#paint').is(':checked')) {
-                totalOptionalExtras += 0.03;
-            }
+            $(':checkbox').each(function() {
+                if (this.checked) {
+                    totalOptionalExtras += Number(this.value);
+                }
+            });
 
+            
+
+            // if ($('#stripes').is(':checked')) {
+            //     totalOptionalExtras += $(this).val();
+            // }
+            // if ($('#coffee').is(':checked')) {
+            //     totalOptionalExtras += 0.01;
+            // }
+            // if ($('#paint').is(':checked')) {
+            //     totalOptionalExtras += 0.03;
+            // }
+            console.log(totalOptionalExtras);
 
             return totalOptionalExtras;
 
